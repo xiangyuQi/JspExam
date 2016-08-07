@@ -22,10 +22,10 @@ body {
 				<td><a href="login.jsp">登录</a></td>
 			</tr>
 			<tr>
-				<td><a href="/FilmList">电影列表</a></td>
+				<td><a href="/FilmAction/list">电影列表</a></td>
 			</tr>
 			<tr>
-				<td><a href="/FilmAdd">添加电影</a></td>
+				<td><a href="filmAdd.jsp">添加电影</a></td>
 			</tr>
 		</table>
 	</div>

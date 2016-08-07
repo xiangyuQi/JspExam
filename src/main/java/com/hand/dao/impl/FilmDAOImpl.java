@@ -24,12 +24,14 @@ public class FilmDAOImpl extends BaseDAO<Film> implements FilmDAO{
 	}
 
 	public int update(Film t) throws SQLException {
-		//TODO
-		return 0;
+		String sql = "update film set  title = ?,description=?,language_id = ? where film_id = ?";
+		Object objs[] ={t.getTitle(),t.getDescription(),t.getLanguage().getLanguageId(),t.getFilmId()};
+		return commonUpdate(sql, objs);
 	}
 
 	public List<Film> getAll() throws SQLException {
-		String sql = "select film_id,title,description,language_id from film";
+		String sql = "select f.film_id,f.title,f.description,f.language_id ,l.name "
+				+ "from film f, language l where f.language_id = l.language_id";
 		Object objs[] = {};
 		return commonQuery(sql, objs);
 	}
@@ -40,12 +42,15 @@ public class FilmDAOImpl extends BaseDAO<Film> implements FilmDAO{
 	}
 
 	public Film getByID(String sno) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select f.film_id,f.title,f.description,f.language_id ,l.name "
+				+ "from film f, language l where f.language_id = l.language_id and f.film_id =?";
+		Object objs []={sno}; 
+		return commonByID(sql, objs);
 	}
 
 	public List<Film> listPage(int pageNo, int pageSize) throws SQLException {
-		String sql = "select film_id,title,description,language_id from film limit ?,?";
+		String sql = "select f.film_id,f.title,f.description,f.language_id ,l.name "
+				+ "from film f, language l where f.language_id = l.language_id limit ?,?";
 		Object objs[] = {(pageNo-1)*pageSize,pageSize};
 		return commonQuery(sql, objs); 
 	}
@@ -53,12 +58,13 @@ public class FilmDAOImpl extends BaseDAO<Film> implements FilmDAO{
 	@Override
 	public Film wrapper(ResultSet rs) throws SQLException {
 		Film f= new Film();
-		f.setFilmId(rs.getShort("film_id"));
+		f.setFilmId(rs.getShort("f.film_id"));
 		Language language= new Language();
-		language .setLanguageId(rs.getByte("language_id"));
+		language .setLanguageId(rs.getByte("f.language_id"));
+		language.setName(rs.getString("l.name"));
 		f.setLanguage(language);
-		f.setTitle(rs.getString("title"));
-		f.setDescription(rs.getString("description"));
+		f.setTitle(rs.getString("f.title"));
+		f.setDescription(rs.getString("f.description"));
 		return f;
 	}
 	

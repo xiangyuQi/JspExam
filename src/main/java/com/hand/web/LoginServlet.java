@@ -1,4 +1,4 @@
-package com.hand.servlet;
+package com.hand.web;
 
 import java.io.IOException;
 
@@ -17,6 +17,8 @@ public class LoginServlet extends HttpServlet {
 	
     public LoginServlet() {
     }
+    
+ 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -29,6 +31,7 @@ public class LoginServlet extends HttpServlet {
 		if(name !=null){
 			if(service.existUser(name)){
 				forward = "index.jsp";
+				request.getSession().setAttribute("user", name);
 			}else{
 				request.setAttribute("msg", "用户不存在，请重新输入");
 				forward = "login.jsp";
