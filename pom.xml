@@ -86,6 +86,7 @@
 				<configuration>
 					<webAppConfig>
 						<allowDuplicateFragmentNames>true</allowDuplicateFragmentNames>
+						  <defaultsDescriptor>src/main/resources/webdefault.xml</defaultsDescriptor>    
 					</webAppConfig>
 				</configuration>
 			</plugin>

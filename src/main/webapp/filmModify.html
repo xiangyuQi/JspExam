@@ -9,8 +9,8 @@
 	<div align="center">
 		<h1>修改</h1>
 		<form action="/FilmAction/modify" method="post">
-			<input type="hidden" name="filmId" value="3">
-			<input type="hidden" name="pageNo" value="1">
+			<input type="hidden" name="filmId" value="1002">
+			<input type="hidden" name="pageNo" value="101">
 			<table border="1" cellpadding="5" cellspacing="0"
 				bordercolor="silver" align="center">
 				<tr>
@@ -18,12 +18,12 @@
 				</tr>
 				<tr>
 					<td>Title</td>
-					<td><input type="text" name="title" value="ADAPTATION HOLES"/></td>
+					<td><input type="text" name="title" value="测试"/></td>
 				</tr>
 				<tr>
 					<td>Description</td>
 					<td><textarea rows="5" cols="20" name="description" >
-						A Astounding Reflection of a Lumberjack And a Car who must Sink a Lumberjack in A Baloon Factory
+						中文测试
 					</textarea>
 					</td>
 				</tr>
@@ -35,7 +35,6 @@
 					<td>Language</td>
 					<td><select name="languageId" >
 								<option value="1" 
-									selected
 								>English</option>
 								<option value="2" 
 								>Italian</option>
@@ -46,6 +45,7 @@
 								<option value="5" 
 								>French</option>
 								<option value="6" 
+									selected
 								>German</option>
 					</select></td>
 				</tr>
